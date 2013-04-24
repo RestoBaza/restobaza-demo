@@ -1,0 +1,411 @@
+/* MENU STYLES */
+
+
+/* BASIC MENU STYLES */
+/* these styles form the base styles for every menu and should be overridden for specific menus*/
+
+.rb_menu .menu_sections_wrap {
+  text-align: left;
+}
+
+
+.rb_menu .menu_sections_division {
+  font-weight: bold;
+  margin-bottom: 1em;
+}
+
+
+/* the list of menu sections */
+
+.rb_menu .sections_list {
+  margin: 0 0 1.5em;
+}
+
+
+.rb_menu .sections_list {
+    list-style: none outside none;
+    margin: 0;
+    margin-bottom: 1em;
+    padding: 0;
+}
+
+.rb_menu .sections_list li {
+    margin: 0 10px 10px 0;
+    padding: 0;
+    float: left;
+}
+
+.rb_menu .sections_list li a {
+  
+  display: block;
+  padding: 5px 10px;
+  margin: 0;
+  
+  color: #444;
+
+  text-decoration: none;
+  letter-spacing: 1px; 
+  /*text-shadow: 0 1px 0 #fff;*/
+  /*text-transform: lowercase;*/
+  /*text-transform: uppercase;*/
+
+}
+
+.rb_menu .round_corners .sections_list li a {
+	-webkit-border-radius: 3px;
+     -moz-border-radius: 3px;
+          border-radius: 3px;
+}
+
+.rb_menu .sections_list li a:hover {
+    background-color: #cfcfcf;
+}
+
+.rb_menu .sections_list li a.active {
+  color: #fff;
+  background-color: #636363;
+
+}
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+/* basic section name and subsection styles */
+.rb_menu .menu_section_name_wrap,
+.rb_menu .menu_subsection_name_wrap {
+	margin: 20px 0 15px;
+  background-color: #F4F4F4;
+	padding: 7px 5px;
+  text-align: left;
+}
+
+
+.rb_menu .round_corners .menu_section_name_wrap,
+.rb_menu .round_corners .menu_subsection_name_wrap {
+	-webkit-border-radius: 3px;
+     -moz-border-radius: 3px;
+          border-radius: 3px;
+}
+
+.rb_menu .menu_section_name,
+.rb_menu .menu_subsection_name {
+  /*width: 300px;*/
+	/*color: #666;*/
+	/*display: inline-block;*/
+	/*font-family: Georgia,Times New Roman;*/
+	/*font-size: 14pt;*/
+	font-style: italic;
+	letter-spacing: -0.2pt;
+    
+}
+
+
+/* if photos are hidden */
+.rb_menu .hide_position_photos .menu_section_name,
+.rb_menu .hide_position_photos .menu_subsection_name {
+    width: 500px;
+}
+
+
+.rb_menu .menu_section_volume,
+.rb_menu .menu_subsection_volume {
+	width: 85px;
+	/*color: #228593;*/
+	text-align: right;
+}
+
+
+
+
+/* basic position styles */
+
+.rb_menu .menu_position {
+	padding: 10px 5px;
+  margin: 20px 0;
+}
+
+
+/* position photo column */
+.rb_menu .position_photo {
+	width: 200px;
+  /*width: auto;*/
+  /*width: 10%;*/
+  /*min-width: 200px;*/
+  /*max-width: 200px;*/
+}
+
+.rb_menu .position_photo img {
+  /*border: 1px solid #333;*/
+  /*background-color: #CDE8E9;*/
+  /*margin: 3px 6px 3px 0;*/
+  /*max-height: 90px;*/
+  max-width: 200px;
+  /*padding: 3px;*/
+  vertical-align: middle;
+  opacity: 1;
+}
+
+.rb_menu .round_corners .position_photo img {
+	-webkit-border-radius: 3px;
+     -moz-border-radius: 3px;
+          border-radius: 3px;
+}
+
+
+.rb_menu .position_photo img:hover {
+    /*border: 1px solid #fff;*/
+    opacity: 0.8;
+}
+
+
+
+
+
+
+/* position description column */
+.rb_menu .position_description_wrap {
+    width: 350px;
+    /*width: auto;*/
+    /*width: 70%;*/
+    padding: 0 0 0 10px;
+    /*color: #D2D7B7;*/
+}
+
+
+/* if position photos are hidden */
+.rb_menu .hide_position_photos .position_description_wrap {
+    width: 575px;
+    padding: 0;
+}
+
+
+
+.rb_menu .position_name {
+	font-weight: bold;
+}
+
+.rb_menu .position_about {
+	/*color:#FFF8C6;*/
+}
+
+
+
+
+
+/* position price column */
+.rb_menu .position_price {
+	width: 75px;
+  /*width: 10%;*/
+	text-align: right;
+	font-weight: bold;
+}
+
+
+
+
+
+
+/* BASIC STYLES FOR SPECIFIC MENU TYPES */
+
+
+/* bar_menu */
+
+.rb_menu .bar_menu .menu_section_name {
+    width: 423px;
+}
+
+.rb_menu .bar_menu td.menu_section_volume {
+    width: 75px;
+}
+
+.rb_menu .bar_menu .position_description_wrap {
+    width: 218px;
+}
+
+
+/* bar_menu with no photos */
+
+.rb_menu .bar_menu .hide_position_photos .position_description_wrap {
+    width: 420px;
+}
+
+
+/* wine_menu  */
+.rb_menu .wine_menu .menu_section_name,
+.rb_menu .wine_menu .menu_subsection_name {
+    width: 423px;
+}
+
+.rb_menu .wine_menu .menu_section_volume {
+    width: 75px;
+}
+
+.rb_menu .wine_menu .position_description_wrap {
+    width: 218px;
+}
+
+
+/* wine_menu with no photos */
+
+.rb_menu .wine_menu .hide_position_photos .position_description_wrap {
+    width: 420px;
+}
+
+
+
+
+/* hookah_menu */
+
+.rb_menu .hookah_menu .menu_section_name {
+    width: 500px;
+}
+
+
+.rb_menu .hookah_menu .position_description_wrap {
+    width: 570px;
+    padding: 0;
+}
+
+
+
+/* MENU COLOR VARIANTS */
+
+
+/* azure */
+.rb_menu .azure .menu_section_name_wrap,
+.rb_menu .azure .menu_subsection_name_wrap {
+	background-color: #CFFAFA;
+}
+
+.rb_menu .azure .sections_list li a {
+  color: #4A6D6E;
+  /*background-color: #EBFDFE;*/
+  /*background-color: rgba(235, 253, 254, 0.8);*/
+}
+
+/*should be before :hover */
+.rb_menu .azure .sections_list li a:hover {
+    background-color: #EBFDFE;
+}
+
+
+.rb_menu .azure .sections_list li a.active {
+  color: #fff;
+  background-color: #24BDAF;
+
+}
+
+.rb_menu .azure .no_photo {
+  background-color: #E2FCFC;
+}
+
+
+
+/* grey */
+.rb_menu .grey .menu_section_name_wrap,
+.rb_menu .grey .menu_subsection_name_wrap {
+	background-color: #F4F4F4;
+}
+
+.rb_menu .grey .sections_list li a {
+  color: #1A688F;
+  background-color: #eee;
+  /*background-color: rgba(238, 238, 238, 0.8);*/
+}
+
+/*should be before :hover */
+.rb_menu .grey .sections_list li a:hover {
+    background-color: #E4E4E4;
+}
+
+
+.rb_menu .grey .sections_list li a.active {
+  color: #000;
+  background-color: #EEEEEE;
+  /*background-color: transparent;*/
+  font-weight: bold;
+
+}
+
+.rb_menu .grey .no_photo {
+  background-color: #F8F8F8;
+}
+
+
+
+/* END MENU STYLES */
+
+
+
+
+
+
+
+
+
+
+
+/* no photo replacement */
+
+.no_photo {
+    background-color:#F8F8F8;
+    color:#666;
+    font-size:9px;
+    height:100px;
+    width:100px;
+    
+    text-align:center;
+    text-decoration: none;
+    -webkit-border-radius: 3px;
+    -moz-border-radius: 3px;
+    border-radius: 3px;
+}
+
+.no_photo .no_photo_text {
+    padding: 27px 0 0;
+    margin: 0 10px;
+}
+
+.no_photo {
+    font-size:12px;
+    height:150px;
+    width:200px;
+    line-height: 150px;
+    padding: 0;
+}
+
+
+.no_photo .no_photo_text {
+    padding: 0;
+}
+
+
+.related_item_image_wrap .no_photo {
+    position: relative;
+    font-size:25px;
+    height:70px;
+    width:100px;
+    line-height: 17px;
+    padding: 0;
+}
+
+.related_item_image_wrap .no_photo .no_photo_link{
+    position: absolute;
+    left: 0px;
+    right: 0px;
+    width: 100px;
+    height: 70px;
+    line-height: 70px;
+}
+
+
