@@ -15,7 +15,7 @@ You can use RestoBaza API to build a web site for a restaurant, if the restauran
 
 Obtain the latest version of the demo site with:
 
-    git clone git@github.com:ivankd/restobazademo.git
+    git clone git@github.com:ivankd/restobaza-demo.git
 
 
 # Client libraries 
