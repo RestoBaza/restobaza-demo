@@ -1,12 +1,18 @@
 
 
 <div class="box">
+<p>
+Демонстрация работы <a target="_blank" href="http://developers.restobaza.ru">RestoBaza API</a>.
+</p>
 
-Все страницы данного демо сайта используют методы RestoBaza API, описанные в <a target="_blank" href="http://developers.restobaza.ru">документации</a>.  
+<p>
+Вы можете скачать последнюю версию этого сайта c <a target="_blank" href="https://github.com/ivankd/restobaza-demo">GitHub</a>.
+</p>
 
+<p class="mb0">
 Cайт сделан на PHP, не использует какие-либо фреймворки, базы данных, элементы iFrame, или технологию AJAX. Все страницы могут быть проиндексированы поисковыми роботами.  
+</p>
 
-Вы можете скачать последнюю версию этого демо сайта c GitHub: <a target="_blank" href="https://github.com/ivankd">https://github.com/ivankd</a>.
 </div><!--box-->
 
 
