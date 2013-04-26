@@ -82,7 +82,7 @@ $restobaza = new Restobaza($config);
       $content_tpl = 'tpl/news/list.php';
 
       $api_params = array(
-        "v" => 1,
+        "v" => 2,
         "limit" => $limit,
         "offset" => $offset
       );
@@ -100,9 +100,9 @@ $restobaza = new Restobaza($config);
       $api_params = array(
         "v" => 2,
         "id" => $item_id,
-        //"photos_limit" => $limit,
-        //"photos_offset" => $offset,
-        //"other_limit" => 2
+        "photos_limit" => $limit,
+        "photos_offset" => $offset,
+        "other_limit" => 2
       );
       $rb_response = $restobaza->api('news/getone', $api_params);
       //var_dump($restobaza);
@@ -135,7 +135,7 @@ $restobaza = new Restobaza($config);
       $content_tpl = 'tpl/events/list.php';
       
       $api_params = array(
-        "v" => 1,
+        "v" => 2,
         "now_time" => date('Ymd\THis'),
         "type" => $action,
         "limit" => $limit,

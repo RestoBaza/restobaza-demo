@@ -294,47 +294,44 @@
       // 'other' key can be empty if there is no data 
       if(!empty($other_data))
       {
+        $other_items = $other_data['list'];
+        $pagination = $other_data['pagination'];
         
-        $has_more = $other_data['has_more'];
-        //$total = $other_data['count'];
+        //$has_more = $other_data['has_more'];
+        $has_more = false;
+        if($pagination['total_items'] > $pagination['limit']) {
+          $has_more = true;
+        }
+
         
         switch ($type)
         {
         case 'news':
           $related_items_title = 'Новости';
-          $other_items = $other_data['news'];
         break;
       
         case 'albums': 
           $related_items_title = 'Альбомы';
-          $other_items = $other_data['albums'];
         break;
       
         case 'articles': 
           $related_items_title = 'Статьи';
-          $other_items = $other_data['articles'];
         break;
       
         case 'vacancies':
           $related_items_title = 'Вакансии';
-          $other_items = $other_data['vacancies'];
         break;
       
 
 
         case 'guide':
           $related_items_title = 'Афиша';
-          $other_items = $other_data['events'];
         break;
-      
         case 'reports': 
           $related_items_title = 'Фотоотчеты';
-          $other_items = $other_data['events'];
         break;
-      
         case 'past': 
           $related_items_title = 'Прошедшие события';
-          $other_items = $other_data['events'];
         break;
 
         }

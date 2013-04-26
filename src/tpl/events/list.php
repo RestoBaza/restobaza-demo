@@ -17,7 +17,7 @@ if(isset($rb_error)) {
 <div class="box">
 
 
-    <?php foreach($rb_response['events'] as $event) { 
+    <?php foreach($rb_response['list'] as $event) { 
     
     $link_to_item = 'index.php?controller=event&item_id='.$event['id'];
     $link_to_item_photos = 'index.php?controller=event_photos&item_id='.$event['id'];

@@ -273,6 +273,8 @@ class Restobaza {
     $query_url = $url.'/'.$method . '?'.$url_params_str;
 
     //echo(htmlentities($query_url));
+    //echo '<br/>';
+    //echo '<br/>';
     
     $this->query_url = $query_url;
     return $query_url;

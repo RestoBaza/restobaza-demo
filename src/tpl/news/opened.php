@@ -57,7 +57,7 @@ generateBreadCrumbs($crumbs_level_1, $crumbs_level_2);
     <!--photo gallery-->
     <?php if(!empty($rb_response['images'])) { ?>
     
-      <?php generateGallery($rb_response['images'], 100, 1024); ?>
+      <?php generateGallery($rb_response['images']['list'], 100, 1024); ?>
       
       <!--load fancybox-->
       <script type="text/javascript">
