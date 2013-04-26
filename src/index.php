@@ -197,7 +197,7 @@ $restobaza = new Restobaza($config);
       $content_tpl = 'tpl/albums/list.php';
       
       $api_params = array(
-        "v" => 1,
+        "v" => 2,
         "limit" => $limit,
         "offset" => $offset
       );
@@ -304,7 +304,7 @@ $restobaza = new Restobaza($config);
       $content_tpl = 'tpl/articles/list.php';
       
       $api_params = array(
-        "v" => 1,
+        "v" => 2,
         "limit" => $limit,
         "offset" => $offset
       );

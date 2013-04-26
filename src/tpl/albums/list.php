@@ -18,7 +18,7 @@ generateBreadCrumbs($crumbs_level_1);
 
 <div class="box">
     
-    <?php foreach($rb_response['albums'] as $album) { 
+    <?php foreach($rb_response['list'] as $album) { 
     
     $link_to_item = 'index.php?controller=album&item_id='.$album['id'];
     $link_to_item_photos = 'index.php?controller=album_photos&item_id='.$album['id'];
