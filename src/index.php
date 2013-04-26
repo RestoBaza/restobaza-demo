@@ -65,7 +65,7 @@ $restobaza = new Restobaza($config);
       $content_tpl = 'tpl/interior/photos.php';
       
       $api_params = array(
-        "v" => 1,
+        "v" => 2,
         "limit" => $limit,
         "offset" => $offset
       );
@@ -251,7 +251,7 @@ $restobaza = new Restobaza($config);
       $content_tpl = 'tpl/partners/list.php';
       
       $api_params = array(
-        "v" => 1,
+        "v" => 2,
         "limit" => $limit,
         "offset" => $offset
       );
@@ -269,7 +269,7 @@ $restobaza = new Restobaza($config);
       $content_tpl = 'tpl/vacancies/list.php';
       
       $api_params = array(
-        "v" => 1,
+        "v" => 2,
         "limit" => $limit,
         "offset" => $offset
       );
@@ -284,7 +284,7 @@ $restobaza = new Restobaza($config);
       $content_tpl = 'tpl/vacancies/opened.php';
       
       $api_params = array(
-        "v" => 1,
+        "v" => 2,
         "id" => $item_id,
         "other_limit" => 2
       );

@@ -20,7 +20,7 @@ generateBreadCrumbs($crumbs_level_1);
 
 <div class="box">
 
-    <?php foreach($rb_response['vacancies'] as $vacancy) { 
+    <?php foreach($rb_response['list'] as $vacancy) { 
     
     $link_to_item = 'index.php?controller=vacancy&item_id='.$vacancy['id'];
     ?>

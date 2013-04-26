@@ -20,7 +20,7 @@ generateBreadCrumbs($crumbs_level_1);
 
 <div class="box">
 
-    <?php foreach($rb_response['partners'] as $partner) { ?>
+    <?php foreach($rb_response['list'] as $partner) { ?>
     
     <div class="mb30">
     
