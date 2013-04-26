@@ -21,9 +21,14 @@ try
 $content_tpl = 'tpl/welcome/index.php';
 
 $config = array();
-$config['app_id'] = 6;
-$config['app_secret'] = 'tc1a7g8b12dbd445';
-$config['co_id'] = 1;
+//$config['app_id'] = 6;
+//$config['app_secret'] = 'tc1a7g8b12dbd445';
+//$config['co_id'] = 1;
+
+$config['app_id'] = 15;
+$config['app_secret'] = '7e427d9c968cfd47';
+$config['co_id'] = 25;
+
 $config['test_errors'] = false; // false true
 $config['test_empty_data'] = false; // false true
 
@@ -95,9 +100,9 @@ $restobaza = new Restobaza($config);
       $api_params = array(
         "v" => 2,
         "id" => $item_id,
-        "photos_limit" => $limit,
-        "photos_offset" => $offset,
-        "other_limit" => 2
+        //"photos_limit" => $limit,
+        //"photos_offset" => $offset,
+        //"other_limit" => 2
       );
       $rb_response = $restobaza->api('news/getone', $api_params);
       //var_dump($restobaza);

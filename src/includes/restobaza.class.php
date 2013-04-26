@@ -262,7 +262,7 @@ class Restobaza {
     
     $url_params_str = implode('&', $url_params_array);
     
-    if(true) {
+    if(false) {
       $url = $this->api_address;
     } else {
       // this is for my local testing 
@@ -312,6 +312,7 @@ class Restobaza {
     $result = @file_get_contents($query_url);
     //var_dump($query_url);
     //var_dump($result);
+    echo($result);
     //exit;
 
     // if file_get_contents returned data
@@ -319,7 +320,11 @@ class Restobaza {
       
         // decode JSON into PHP array
         $decoded = json_decode($result, true);
+        //$decoded = json_decode($result, false);
         //var_dump($decoded);
+        //print_r($decoded);
+        //echo($decoded);
+        //exit;
         
         // if json_decode function cannot decode response from RestoBaza
         //if($decoded === null) {
