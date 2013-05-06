@@ -9,8 +9,17 @@ $params = $_GET;
 $controller = isset($params['controller']) ? $params['controller'] : 'welcome';
 $action = isset($params['action']) ? $params['action'] : 'index';
 $item_id = isset($params['item_id']) ? $params['item_id'] : false;
-$limit = 10;
+
+
+// pagination
+$limit = 1;
 $offset = 0;
+$page = isset($params['page']) ? $params['page'] : false;
+if($page)
+{
+  $offset = ($page - 1)*$limit;
+}
+
 
 
 
@@ -20,17 +29,26 @@ try
   
 $content_tpl = 'tpl/welcome/index.php';
 
-$config = array();
+//$config = array();
 //$config['app_id'] = 6;
 //$config['app_secret'] = 'tc1a7g8b12dbd445';
 //$config['co_id'] = 1;
 
-$config['app_id'] = 15;
-$config['app_secret'] = '7e427d9c968cfd47';
-$config['co_id'] = 25;
+//$config['app_id'] = 15;
+//$config['app_secret'] = '7e427d9c968cfd47';
+//$config['co_id'] = 25;
+//
+//$config['test_errors'] = false; // false true
+//$config['test_empty_data'] = false; // false true
+//
 
-$config['test_errors'] = false; // false true
-$config['test_empty_data'] = false; // false true
+$config = array(
+  "co_id" => 25,
+  "app_id" => 15,
+  "app_secret" => '7e427d9c968cfd47', 
+  "test_errors" => false, // false true
+  "test_empty_data" => false // false true
+);
 
 $restobaza = new Restobaza($config);
 

@@ -79,6 +79,11 @@ generateBreadCrumbs($crumbs_level_1);
 
 </div><!--end box-->
 
+<?php generatePages($rb_response['pagination'], 'index.php?controller=news'); ?>
+
+
+
+
 <?php } // else ?>
 
 

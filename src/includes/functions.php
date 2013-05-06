@@ -346,6 +346,127 @@
   
   
   
+  /** generatePages
+  *
+  * generates html for related items from RestoBaza object
+  *
+  * @param array $pagination_data an array from RestoBaza resoponse object
+  * @param str $link 'news'
+  *
+  * @return html
+  * 
+  * generateOtherHtml($digest_obj->data['guide'], 'guide');
+  * 
+  */
+
+  function generatePages($pagination_data, $link)
+  {
+    
+    $total_items = $pagination_data['total_items'];
+    //$offset = $pagination_data['offset'];
+    $limit = $pagination_data['limit'];
+    //$limit = 1;
+    //var_dump($_SERVER);
+    
+    
+    
+    // get current url 
+    $current_url = "http://$_SERVER[HTTP_HOST]$_SERVER[REQUEST_URI]";
+    //echo($current_url);
+    //http://localhost/demo_restobaza/src/index.php?controller=news
+    
+    
+    
+    // parse current url 
+    $url_components = parse_url($current_url);
+    //print_r($url_components);
+    //Array ( [scheme] => http [host] => localhost [path] => /demo_restobaza/src/index.php [query] => controller=news )
+    $scheme = $url_components['scheme'];
+    $host = $url_components['host'];
+    $path = $url_components['path'];
+    
+    
+    
+    // get query string
+    //parse_str($url_components['query'],  $query_components);
+    //print_r($query_components);
+    //Array ( [controller] => news )
+    $query_components = $_GET;
+    //var_dump($query_components);
+    
+    
+    
+    // set current page, total pages, previous page, next page
+    $total_pages = (int) ceil($total_items / $limit);
+		if( isset($query_components['page']) )
+    {
+			$current_page = (int) $query_components['page'];
+		} else {
+			$current_page = 1;
+		}
+		$next_page = $current_page + 1;
+    $prev_page = $current_page - 1;
+    
+    
+    
+    // stop of there are no pages
+    if($total_pages == 0 || $total_pages == 1) {
+      return false;
+		}
+    
+    
+    $html = '';
+    $html .= '<div class="page_nav mt15">';
+    $html .= '<ul class="next-prev clearFix">';
+    
+    
+    // create html for previous page
+		if ($current_page > 1)
+    {
+      $query_components['page'] = $prev_page;
+      $page_url = 'index.php?'.http_build_query($query_components);
+      //var_dump($page_url);
+      // index.php?controller=news&page=1
+      
+      
+      $html .= '<li>';
+      $html .= "<a class=\"prev\" href=\"$page_url\">&laquo;&nbsp;предыдущая страница</a>";
+      $html .= '</li>';
+      
+    }
+    
+    
+    // create html for next page 
+    if ($current_page != $total_pages)
+    {
+      $query_components['page'] = $next_page;
+      
+      $page_url = 'index.php?'.http_build_query($query_components);
+      //$page_url = $path.'?'.http_build_query($query_components);
+      //$page_url = $scheme.'://'.$host.$path.'?'.http_build_query($query_components);
+      //$page_url = $host.$path.'?'.http_build_query($query_components);
+      //var_dump($page_url);
+      // index.php?controller=news&page=1
+      
+      
+      $html .= '<li>';
+      $html .= "<a class=\"prev\" href=\"$page_url\">следующая страница&nbsp;&raquo;</a>";
+      $html .= '</li>';
+      
+    }
+
+
+    $html .= '</ul>';
+    $html .= '</div>';
+    
+    
+    echo $html;
+    
+    
+  }
+  
+  
+  
   
 
 
