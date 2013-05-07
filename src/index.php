@@ -12,16 +12,11 @@ $item_id = isset($params['item_id']) ? $params['item_id'] : false;
 
 
 // pagination
+$page = isset($params['page']) ? $params['page'] : 1;
 $limit = 1;
+
+
 $offset = 0;
-$page = isset($params['page']) ? $params['page'] : false;
-if($page)
-{
-  $offset = ($page - 1)*$limit;
-}
-
-
-
 
 
 try
@@ -101,8 +96,8 @@ $restobaza = new Restobaza($config);
 
       $api_params = array(
         "v" => 2,
-        "limit" => $limit,
-        "offset" => $offset
+        "page" => $page, 
+        "limit" => 2
       );
       $rb_response = $restobaza->api('news/getmany', $api_params);
       //var_dump($restobaza);

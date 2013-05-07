@@ -361,21 +361,16 @@
   function generatePages($pagination_data)
   {
     
-    $total_items = $pagination_data['total_items'];
-    //$offset = $pagination_data['offset'];
-    $limit = $pagination_data['limit'];
-    //$limit = 1;
-    //var_dump($_SERVER);
+    //if(empty($pagination_data)) { return false;}
     
-    
-    
+
     // get current url 
     $current_url = "http://$_SERVER[HTTP_HOST]$_SERVER[REQUEST_URI]";
     //echo($current_url);
     //http://localhost/demo_restobaza/src/index.php?controller=news
     
-    
-    
+
+
     // parse current url 
     $url_components = parse_url($current_url);
     //var_dump($url_components);
@@ -403,22 +398,27 @@
     
     
     // set current page, total pages, previous page, next page
-    $total_pages = (int) ceil($total_items / $limit);
-		if( isset($query_components['page']) )
-    {
-			$current_page = (int) $query_components['page'];
-		} else {
-			$current_page = 1;
-		}
+    $total_pages = $pagination_data['total_pages'];
+    $current_page = $pagination_data['page'];
 		$next_page = $current_page + 1;
     $prev_page = $current_page - 1;
     
     
     
-    // stop of there are no pages
+    // stop if there are no pages
     if($total_pages == 0 || $total_pages == 1) {
       return false;
 		}
+    
+//    $total_pages = (int) ceil($total_items / $limit);
+//		if( isset($query_components['page']) )
+//    {
+//			$current_page = (int) $query_components['page'];
+//		} else {
+//			$current_page = 1;
+//		}
+    
+
     
     
     
@@ -434,7 +434,7 @@
     
     // start building html for previous and next pages 
     $html = '';
-    $html .= '<ul class="pager clearFix">';
+    $html .= '<ul class="pager">';
     
     
     // html for previous page
@@ -445,8 +445,8 @@
       //var_dump($page_url_final);
       // /demo_restobaza/src/index.php?controller=news&page=1
       
-      
       $html .= '<li class="previous">';
+      //$html .= '<li>';
       $html .= "<a href=\"$page_url_final\">&larr; предыдущая страница</a>";
       $html .= '</li>';
       
@@ -462,8 +462,8 @@
       //var_dump($page_url_final);
       // /demo_restobaza/src/index.php?controller=news&page=3
       
-      
       $html .= '<li class="next">';
+      //$html .= '<li>';
       $html .= "<a href=\"$page_url_final\">следующая страница &rarr;</a>";
       $html .= '</li>';
       
