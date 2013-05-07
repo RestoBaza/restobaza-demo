@@ -351,7 +351,6 @@
   * generates html for related items from RestoBaza object
   *
   * @param array $pagination_data an array from RestoBaza resoponse object
-  * @param str $link 'news'
   *
   * @return html
   * 
@@ -359,7 +358,7 @@
   * 
   */
 
-  function generatePages($pagination_data, $link)
+  function generatePages($pagination_data)
   {
     
     $total_items = $pagination_data['total_items'];
@@ -379,8 +378,12 @@
     
     // parse current url 
     $url_components = parse_url($current_url);
-    //print_r($url_components);
-    //Array ( [scheme] => http [host] => localhost [path] => /demo_restobaza/src/index.php [query] => controller=news )
+    //var_dump($url_components);
+    //  array
+    //'scheme' => string 'http' (length=4)
+    //'host' => string 'localhost' (length=9)
+    //'path' => string '/demo_restobaza/src/index.php' (length=29)
+    //'query' => string 'controller=news&page=2' (length=22)
     $scheme = $url_components['scheme'];
     $host = $url_components['host'];
     $path = $url_components['path'];
@@ -393,6 +396,9 @@
     //Array ( [controller] => news )
     $query_components = $_GET;
     //var_dump($query_components);
+    //  array
+    //'controller' => string 'news' (length=4)
+    //'page' => string '2' (length=1)
     
     
     
@@ -415,6 +421,18 @@
 		}
     
     
+    
+    // set the start of the page url to one of the following
+    // index.php?
+    // /demo_restobaza/src/index.php?
+    // http://localhost/demo_restobaza/src/index.php?
+    
+    //$page_url_start = 'index.php?'; 
+    //$page_url_start = $path.'?'; 
+    $page_url_start = $scheme.'://'.$host.$path.'?'; 
+    
+    
+    // start building html for previous and next pages 
     $html = '';
     $html .= '<div class="page_nav mt15">';
     $html .= '<ul class="next-prev clearFix">';
@@ -424,13 +442,13 @@
 		if ($current_page > 1)
     {
       $query_components['page'] = $prev_page;
-      $page_url = 'index.php?'.http_build_query($query_components);
-      //var_dump($page_url);
-      // index.php?controller=news&page=1
+      $page_url_final = $page_url_start.http_build_query($query_components);
+      //var_dump($page_url_final);
+      // /demo_restobaza/src/index.php?controller=news&page=1
       
       
       $html .= '<li>';
-      $html .= "<a class=\"prev\" href=\"$page_url\">&laquo;&nbsp;предыдущая страница</a>";
+      $html .= "<a class=\"prev\" href=\"$page_url_final\">&laquo;&nbsp;предыдущая страница</a>";
       $html .= '</li>';
       
     }
@@ -441,28 +459,73 @@
     {
       $query_components['page'] = $next_page;
       
-      $page_url = 'index.php?'.http_build_query($query_components);
-      //$page_url = $path.'?'.http_build_query($query_components);
-      //$page_url = $scheme.'://'.$host.$path.'?'.http_build_query($query_components);
-      //$page_url = $host.$path.'?'.http_build_query($query_components);
-      //var_dump($page_url);
-      // index.php?controller=news&page=1
+      $page_url_final = $page_url_start.http_build_query($query_components);
+      //var_dump($page_url_final);
+      // /demo_restobaza/src/index.php?controller=news&page=3
       
       
       $html .= '<li>';
-      $html .= "<a class=\"prev\" href=\"$page_url\">следующая страница&nbsp;&raquo;</a>";
+      $html .= "<a class=\"prev\" href=\"$page_url_final\">следующая страница&nbsp;&raquo;</a>";
       $html .= '</li>';
       
     }
 
 
-    $html .= '</ul>';
-    $html .= '</div>';
+    $html .= '</ul>'; // end next-prev
     
     
+    
+    
+    
+    // start building html for page numbers 
+    $html .= '<ul id="nav-pages" class="clearFix">';
+    
+    $range = 3; // how many pages to show to the left or right of the current page
+    $page_number = $current_page - $range;
+    
+    for ($page_number; true; $page_number++)
+    {
+      //var_dump('new for');
+      //var_dump($page_number);
+      
+      // check if page number is less than or equal to 0:
+      if ($page_number <= 0)
+      {
+        $page_number = 0;
+        continue;
+      }
+      
+      // stop if any of these conditions is met:
+      if ($page_number > $current_page + $range + 1 ||
+          $page_number > $total_pages
+          )
+      {
+        break;
+      }
+
+      
+      if ($page_number == $current_page)
+      {
+        $html .= '<li><span class="current">'.$page_number.'</span></li>';
+      } else {
+        
+        $query_components['page'] = $page_number;
+        $page_url_final = $page_url_start.http_build_query($query_components);
+        //var_dump($page_url_final);
+        // /demo_restobaza/src/index.php?controller=news&page=3
+        
+        $html .= '<li>';
+        $html .= "<a href=\"$page_url_final\">$page_number</a>";
+        $html .= '</li>';
+      } 
+
+		
+    }
+    
+    $html .= '</ul>'; // end nav-pages
+    $html .= '</div>'; // end page_nav 
     echo $html;
-    
-    
+
   }
   
   
