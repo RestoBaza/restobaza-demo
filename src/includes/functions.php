@@ -428,17 +428,16 @@
     // http://localhost/demo_restobaza/src/index.php?
     
     //$page_url_start = 'index.php?'; 
-    //$page_url_start = $path.'?'; 
-    $page_url_start = $scheme.'://'.$host.$path.'?'; 
+    $page_url_start = $path.'?'; 
+    //$page_url_start = $scheme.'://'.$host.$path.'?'; 
     
     
     // start building html for previous and next pages 
     $html = '';
-    $html .= '<div class="page_nav mt15">';
-    $html .= '<ul class="next-prev clearFix">';
+    $html .= '<ul class="pager clearFix">';
     
     
-    // create html for previous page
+    // html for previous page
 		if ($current_page > 1)
     {
       $query_components['page'] = $prev_page;
@@ -447,14 +446,14 @@
       // /demo_restobaza/src/index.php?controller=news&page=1
       
       
-      $html .= '<li>';
-      $html .= "<a class=\"prev\" href=\"$page_url_final\">&laquo;&nbsp;предыдущая страница</a>";
+      $html .= '<li class="previous">';
+      $html .= "<a href=\"$page_url_final\">&larr; предыдущая страница</a>";
       $html .= '</li>';
       
     }
     
     
-    // create html for next page 
+    // html for next page 
     if ($current_page != $total_pages)
     {
       $query_components['page'] = $next_page;
@@ -464,21 +463,20 @@
       // /demo_restobaza/src/index.php?controller=news&page=3
       
       
-      $html .= '<li>';
-      $html .= "<a class=\"prev\" href=\"$page_url_final\">следующая страница&nbsp;&raquo;</a>";
+      $html .= '<li class="next">';
+      $html .= "<a href=\"$page_url_final\">следующая страница &rarr;</a>";
       $html .= '</li>';
       
     }
-
-
-    $html .= '</ul>'; // end next-prev
+    $html .= '</ul>'; // end pager
     
     
     
     
     
-    // start building html for page numbers 
-    $html .= '<ul id="nav-pages" class="clearFix">';
+    // html for page numbers
+    $html .= '<div class="pagination">';
+    $html .= '<ul>';
     
     $range = 3; // how many pages to show to the left or right of the current page
     $page_number = $current_page - $range;
@@ -506,7 +504,7 @@
       
       if ($page_number == $current_page)
       {
-        $html .= '<li><span class="current">'.$page_number.'</span></li>';
+        $html .= '<li class="active"><span >'.$page_number.'</span></li>';
       } else {
         
         $query_components['page'] = $page_number;
@@ -522,8 +520,8 @@
 		
     }
     
-    $html .= '</ul>'; // end nav-pages
-    $html .= '</div>'; // end page_nav 
+    $html .= '</ul>'; // 
+    $html .= '</div>'; // end pagination 
     echo $html;
 
   }
