@@ -13,7 +13,7 @@ $item_id = isset($params['item_id']) ? $params['item_id'] : false;
 
 // pagination
 $page = isset($params['page']) ? $params['page'] : 1;
-$limit = 10;
+$limit = 1;
 
 
 $offset = 0;
@@ -130,8 +130,8 @@ $restobaza = new Restobaza($config);
       $api_params = array(
         "v" => 2,
         "id" => $item_id,
-        "photos_limit" => $limit,
-        "photos_page" => $page
+        "photos_page" => $page,
+        "photos_limit" => $limit
       );
       $rb_response = $restobaza->api('news/getone', $api_params);
       //var_dump($restobaza);
@@ -151,8 +151,8 @@ $restobaza = new Restobaza($config);
         "v" => 2,
         "now_time" => date('Ymd\THis'),
         "type" => $action,
-        "limit" => $limit,
-        "offset" => $offset
+        "page" => $page, 
+        "limit" => $limit
       );
 
       $rb_response = $restobaza->api('events/getmany', $api_params);
@@ -168,8 +168,8 @@ $restobaza = new Restobaza($config);
         "v" => 2,
         "now_time" => date('Ymd\THis'),
         "id" => $item_id,
+        "photos_page" => $page,
         "photos_limit" => $limit,
-        "photos_offset" => $offset,
         "other_guide_limit" => 2,
         "other_reports_limit" => 2
         //"other_past_limit" => 4
@@ -191,8 +191,8 @@ $restobaza = new Restobaza($config);
         "v" => 2,
         "now_time" => date('Ymd\THis'),
         "id" => $item_id,
-        "photos_limit" => $limit,
-        "photos_offset" => $offset
+        "photos_page" => $page,
+        "photos_limit" => $limit
       );
       
       $rb_response = $restobaza->api('events/getone', $api_params);
