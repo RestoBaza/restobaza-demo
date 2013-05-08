@@ -51,7 +51,7 @@ generateBreadCrumbs($crumbs_level_1, $crumbs_level_2);
     
     <?php generateGallery($rb_response['images']['list'], 100, 1600); ?>
 
-    
+    <?php generatePages($rb_response['images']['pagination'], false, true); ?>
     
     
     <?php } ?>
