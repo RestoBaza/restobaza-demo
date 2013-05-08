@@ -13,7 +13,7 @@ $item_id = isset($params['item_id']) ? $params['item_id'] : false;
 
 // pagination
 $page = isset($params['page']) ? $params['page'] : 1;
-$limit = 1;
+$limit = 10;
 
 
 $offset = 0;
@@ -97,7 +97,7 @@ $restobaza = new Restobaza($config);
       $api_params = array(
         "v" => 2,
         "page" => $page, 
-        "limit" => 2
+        "limit" => $limit
       );
       $rb_response = $restobaza->api('news/getmany', $api_params);
       //var_dump($restobaza);
@@ -113,8 +113,8 @@ $restobaza = new Restobaza($config);
       $api_params = array(
         "v" => 2,
         "id" => $item_id,
+        "photos_page" => $page,
         "photos_limit" => $limit,
-        "photos_offset" => $offset,
         "other_limit" => 2
       );
       $rb_response = $restobaza->api('news/getone', $api_params);
@@ -131,7 +131,7 @@ $restobaza = new Restobaza($config);
         "v" => 2,
         "id" => $item_id,
         "photos_limit" => $limit,
-        "photos_offset" => $offset
+        "photos_page" => $page
       );
       $rb_response = $restobaza->api('news/getone', $api_params);
       //var_dump($restobaza);

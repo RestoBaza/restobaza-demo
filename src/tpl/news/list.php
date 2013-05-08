@@ -79,7 +79,7 @@ generateBreadCrumbs($crumbs_level_1);
 
 </div><!--end box-->
 
-<?php generatePages($rb_response['pagination']); ?>
+<?php generatePages($rb_response['pagination'], true, true); ?>
 
 
 

@@ -351,6 +351,8 @@
   * generates html for related items from RestoBaza object
   *
   * @param array $pagination_data an array from RestoBaza resoponse object
+  * @param bool $show_pager Set to false to disable pager
+  * @param bool $show_pagination true Set to false to disable pagination
   *
   * @return html
   * 
@@ -358,7 +360,7 @@
   * 
   */
 
-  function generatePages($pagination_data)
+  function generatePages($pagination_data, $show_pager = true, $show_pagination = true)
   {
     
     //if(empty($pagination_data)) { return false;}
@@ -434,94 +436,101 @@
     
     // start building html for previous and next pages 
     $html = '';
-    $html .= '<ul class="pager">';
     
     
-    // html for previous page
-		if ($current_page > 1)
+    
+    if($show_pager)
     {
-      $query_components['page'] = $prev_page;
-      $page_url_final = $page_url_start.http_build_query($query_components);
-      //var_dump($page_url_final);
-      // /demo_restobaza/src/index.php?controller=news&page=1
+      $html .= '<ul class="pager">';
       
-      $html .= '<li class="previous">';
-      //$html .= '<li>';
-      $html .= "<a href=\"$page_url_final\">&larr; предыдущая страница</a>";
-      $html .= '</li>';
-      
-    }
-    
-    
-    // html for next page 
-    if ($current_page != $total_pages)
-    {
-      $query_components['page'] = $next_page;
-      
-      $page_url_final = $page_url_start.http_build_query($query_components);
-      //var_dump($page_url_final);
-      // /demo_restobaza/src/index.php?controller=news&page=3
-      
-      $html .= '<li class="next">';
-      //$html .= '<li>';
-      $html .= "<a href=\"$page_url_final\">следующая страница &rarr;</a>";
-      $html .= '</li>';
-      
-    }
-    $html .= '</ul>'; // end pager
-    
-    
-    
-    
-    
-    // html for page numbers
-    $html .= '<div class="pagination">';
-    $html .= '<ul>';
-    
-    $range = 3; // how many pages to show to the left or right of the current page
-    $page_number = $current_page - $range;
-    
-    for ($page_number; true; $page_number++)
-    {
-      //var_dump('new for');
-      //var_dump($page_number);
-      
-      // check if page number is less than or equal to 0:
-      if ($page_number <= 0)
+      // html for previous page
+      if ($current_page > 1)
       {
-        $page_number = 0;
-        continue;
-      }
-      
-      // stop if any of these conditions is met:
-      if ($page_number > $current_page + $range + 1 ||
-          $page_number > $total_pages
-          )
-      {
-        break;
-      }
-
-      
-      if ($page_number == $current_page)
-      {
-        $html .= '<li class="active"><span >'.$page_number.'</span></li>';
-      } else {
+        $query_components['page'] = $prev_page;
+        $page_url_final = $page_url_start.http_build_query($query_components);
+        //var_dump($page_url_final);
+        // /demo_restobaza/src/index.php?controller=news&page=1
         
-        $query_components['page'] = $page_number;
+        $html .= '<li class="previous">';
+        //$html .= '<li>';
+        $html .= "<a href=\"$page_url_final\">&larr; предыдущая страница</a>";
+        $html .= '</li>';
+        
+      }
+      
+      
+      // html for next page 
+      if ($current_page != $total_pages)
+      {
+        $query_components['page'] = $next_page;
+        
         $page_url_final = $page_url_start.http_build_query($query_components);
         //var_dump($page_url_final);
         // /demo_restobaza/src/index.php?controller=news&page=3
         
-        $html .= '<li>';
-        $html .= "<a href=\"$page_url_final\">$page_number</a>";
+        $html .= '<li class="next">';
+        //$html .= '<li>';
+        $html .= "<a href=\"$page_url_final\">следующая страница &rarr;</a>";
         $html .= '</li>';
-      } 
-
-		
+        
+      }
+      $html .= '</ul>'; // end pager
     }
     
-    $html .= '</ul>'; // 
-    $html .= '</div>'; // end pagination 
+    
+    if($show_pagination)
+    {
+      // html for page numbers
+      $html .= '<div class="pagination">';
+      $html .= '<ul>';
+      
+      $range = 3; // how many pages to show to the left or right of the current page
+      $page_number = $current_page - $range;
+      
+      for ($page_number; true; $page_number++)
+      {
+        //var_dump('new for');
+        //var_dump($page_number);
+        
+        // check if page number is less than or equal to 0:
+        if ($page_number <= 0)
+        {
+          $page_number = 0;
+          continue;
+        }
+        
+        // stop if any of these conditions is met:
+        if ($page_number > $current_page + $range + 1 ||
+            $page_number > $total_pages
+            )
+        {
+          break;
+        }
+  
+        
+        if ($page_number == $current_page)
+        {
+          $html .= '<li class="active"><span >'.$page_number.'</span></li>';
+        } else {
+          
+          $query_components['page'] = $page_number;
+          $page_url_final = $page_url_start.http_build_query($query_components);
+          //var_dump($page_url_final);
+          // /demo_restobaza/src/index.php?controller=news&page=3
+          
+          $html .= '<li>';
+          $html .= "<a href=\"$page_url_final\">$page_number</a>";
+          $html .= '</li>';
+        } 
+  
+      
+      }
+      
+      $html .= '</ul>'; // 
+      $html .= '</div>'; // end pagination
+    
+    }
+    
     echo $html;
 
   }
