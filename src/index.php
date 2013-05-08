@@ -12,12 +12,8 @@ $item_id = isset($params['item_id']) ? $params['item_id'] : false;
 
 
 // pagination
-$page = isset($params['page']) ? $params['page'] : 1;
+$page = isset($params['page']) ? (int) $params['page'] : 1;
 $limit = 1;
-
-
-$offset = 0;
-
 
 try
 {
@@ -79,8 +75,8 @@ $restobaza = new Restobaza($config);
       
       $api_params = array(
         "v" => 2,
-        "limit" => $limit,
-        "offset" => $offset
+        "page" => $page,
+        "limit" => $limit
       );
       $rb_response = $restobaza->api('interior/getphotos', $api_params);
       //var_dump($rb_response);
@@ -211,8 +207,8 @@ $restobaza = new Restobaza($config);
       
       $api_params = array(
         "v" => 2,
-        "limit" => $limit,
-        "offset" => $offset
+        "page" => $page, 
+        "limit" => $limit
       );
 
       $rb_response = $restobaza->api('albums/getmany', $api_params);
@@ -227,8 +223,8 @@ $restobaza = new Restobaza($config);
       $api_params = array(
         "v" => 2,
         "id" => $item_id,
+        "photos_page" => $page,
         "photos_limit" => $limit,
-        "photos_offset" => $offset,
         "other_limit" => 2
       );
       $rb_response = $restobaza->api('albums/getone', $api_params);
@@ -245,8 +241,8 @@ $restobaza = new Restobaza($config);
       $api_params = array(
         "v" => 2,
         "id" => $item_id,
-        "photos_limit" => $limit,
-        "photos_offset" => $offset
+        "photos_page" => $page,
+        "photos_limit" => $limit
       );
       $rb_response = $restobaza->api('albums/getone', $api_params);
       //var_dump($restobaza);
@@ -265,8 +261,8 @@ $restobaza = new Restobaza($config);
       
       $api_params = array(
         "v" => 2,
-        "limit" => $limit,
-        "offset" => $offset
+        "page" => $page, 
+        "limit" => $limit
       );
       $rb_response = $restobaza->api('partners/getmany', $api_params);
       //var_dump($rb_response);
@@ -283,8 +279,8 @@ $restobaza = new Restobaza($config);
       
       $api_params = array(
         "v" => 2,
-        "limit" => $limit,
-        "offset" => $offset
+        "page" => $page, 
+        "limit" => $limit
       );
 
       $rb_response = $restobaza->api('vacancies/getmany', $api_params);
@@ -318,8 +314,8 @@ $restobaza = new Restobaza($config);
       
       $api_params = array(
         "v" => 2,
-        "limit" => $limit,
-        "offset" => $offset
+        "page" => $page, 
+        "limit" => $limit
       );
       $rb_response = $restobaza->api('articles/getmany', $api_params);
       //var_dump($rb_response);
@@ -333,8 +329,8 @@ $restobaza = new Restobaza($config);
       $api_params = array(
         "v" => 2,
         "id" => $item_id,
+        "photos_page" => $page,
         "photos_limit" => $limit,
-        "photos_offset" => $offset,
         "other_limit" => 2
       );
 

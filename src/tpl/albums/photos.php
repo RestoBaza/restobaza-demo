@@ -42,5 +42,7 @@ generateBreadCrumbs($crumbs_level_1, $crumbs_level_2, $crumbs_level_3);
 
 </div><!--end box-->
 
+<?php generatePages($rb_response['images']['pagination'], true, true); ?>
+
 <?php } ?>
 
