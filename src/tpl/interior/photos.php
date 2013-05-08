@@ -25,7 +25,9 @@ generateBreadCrumbs($crumbs_level_1);
   Common.loadFancyBox();
 </script>
 
+</div><!--end box-->
+
+<?php generatePages($rb_response['pagination'], true, true); ?>
 
 <?php } // else ?>
 
-</div><!--end box-->
