@@ -49,7 +49,7 @@
   break;
 
   case 'articles':
-    $related_item_name = $item['title'];
+    $related_item_name = $item['name'];
     $related_item_date = generateDate($item['date']);
     $related_item_img = $item['cover'][100]['source'];
     $link_to_items= 'index.php?controller=articles';

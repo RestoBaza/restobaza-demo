@@ -484,7 +484,7 @@
       $html .= '<div class="pagination">';
       $html .= '<ul>';
       
-      $range = 3; // how many pages to show to the left or right of the current page
+      $range = 3; // how many pages to show to the left and right of the current page
       $page_number = $current_page - $range;
       
       for ($page_number; true; $page_number++)
@@ -500,7 +500,7 @@
         }
         
         // stop if any of these conditions is met:
-        if ($page_number > $current_page + $range + 1 ||
+        if ($page_number > $current_page + $range ||
             $page_number > $total_pages
             )
         {

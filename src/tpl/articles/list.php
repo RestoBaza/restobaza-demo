@@ -33,7 +33,7 @@ generateBreadCrumbs($crumbs_level_1);
     <td class="itemPhoto">
     <?php if(!empty($article['cover'])) { ?>
     <a href="<?php echo $link_to_item; ?>">
-        <img src="<?php echo $article['cover'][200]['source']; ?>" alt="<?php echo $article['title']; ?>"/>
+        <img src="<?php echo $article['cover'][200]['source']; ?>" alt="<?php echo $article['name']; ?>"/>
     </a>
     <?php } ?>
     </td>
@@ -44,7 +44,7 @@ generateBreadCrumbs($crumbs_level_1);
     
     <!--item name-->
     <div class="mb15">
-        <h2><a href="<?php echo $link_to_item; ?>"><?php echo $article['title']; ?></a></h2>
+        <h2><a href="<?php echo $link_to_item; ?>"><?php echo $article['name']; ?></a></h2>
     </div>
     
     <div class="mb15">
@@ -55,7 +55,7 @@ generateBreadCrumbs($crumbs_level_1);
     
     <!--item description text-->
     <div class="mb15">
-        <?php echo shortenText($article['text'], 150); ?>
+        <?php echo shortenText($article['description'], 150); ?>
     </div>
     
     <p><a href="<?php echo $link_to_item; ?>">открыть</a></p>

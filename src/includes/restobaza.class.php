@@ -127,6 +127,11 @@ class Restobaza {
       $this->test_empty_data = $config['test_empty_data'];
     }
     
+    if(isset($config['print_result']))
+    {
+      $this->print_result = $config['print_result'];
+    }
+    
   }
   
   
@@ -314,7 +319,9 @@ class Restobaza {
     $result = @file_get_contents($query_url);
     //var_dump($query_url);
     //var_dump($result);
-    echo($result);
+    if($this->print_result == true) {
+      echo($result);
+    }
     //exit;
 
     // if file_get_contents returned data

@@ -13,33 +13,33 @@ $item_id = isset($params['item_id']) ? $params['item_id'] : false;
 
 // pagination
 $page = isset($params['page']) ? (int) $params['page'] : 1;
-$limit = 1;
+$limit = 2;
 
 try
 {
   
 $content_tpl = 'tpl/welcome/index.php';
 
-//$config = array();
-//$config['app_id'] = 6;
-//$config['app_secret'] = 'tc1a7g8b12dbd445';
-//$config['co_id'] = 1;
+// test restaurant with russian text
+$config = array(
+  "co_id" => 1,
+  "app_id" => 6,
+  "app_secret" => 'tc1a7g8b12dbd445', 
+  "test_errors" => false, // false true
+  "test_empty_data" => false, // false true
+  "print_result" => true // false true
+);
 
-//$config['app_id'] = 15;
-//$config['app_secret'] = '7e427d9c968cfd47';
-//$config['co_id'] = 25;
-//
-//$config['test_errors'] = false; // false true
-//$config['test_empty_data'] = false; // false true
-//
-
+// test restaurant with english text and no br 
 $config = array(
   "co_id" => 25,
   "app_id" => 15,
   "app_secret" => '7e427d9c968cfd47', 
   "test_errors" => false, // false true
-  "test_empty_data" => false // false true
+  "test_empty_data" => false, // false true
+  "print_result" => true // false true
 );
+
 
 $restobaza = new Restobaza($config);
 

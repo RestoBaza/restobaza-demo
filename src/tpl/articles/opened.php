@@ -16,7 +16,7 @@ if(isset($rb_error)) {
 $link_to_items= 'index.php?controller=articles';
 
 $crumbs_level_1 = crumbsItem('Пресса о нас', $link_to_items);
-$crumbs_level_2 = crumbsItem($rb_response['title']);
+$crumbs_level_2 = crumbsItem($rb_response['name']);
 generateBreadCrumbs($crumbs_level_1, $crumbs_level_2);
 ?>
 
@@ -28,7 +28,7 @@ generateBreadCrumbs($crumbs_level_1, $crumbs_level_2);
     <!--item photo-->
     <td class="itemPhoto">
     <?php if(!empty($rb_response['cover'])) { ?>
-        <img src="<?php echo $rb_response['cover'][200]['source']; ?>" alt="<?php echo $rb_response['title']; ?>"/>
+        <img src="<?php echo $rb_response['cover'][200]['source']; ?>" alt="<?php echo $rb_response['name']; ?>"/>
     <?php } ?>
     </td>
     
@@ -39,7 +39,7 @@ generateBreadCrumbs($crumbs_level_1, $crumbs_level_2);
     
     <!--item name-->
     <div class="mb15">
-        <h2><?php echo $rb_response['title']; ?></h2>
+        <h2><?php echo $rb_response['name']; ?></h2>
     </div>
     
     <div class="mb15">
@@ -58,7 +58,7 @@ generateBreadCrumbs($crumbs_level_1, $crumbs_level_2);
     
     <!--item description text-->
     <div class="mb15">
-        <?php echo $rb_response['text']; ?>
+        <?php echo $rb_response['description']; ?>
     </div>
     
     <div class="mb30">
