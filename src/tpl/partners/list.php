@@ -30,9 +30,7 @@ generateBreadCrumbs($crumbs_level_1);
    <!--partner photo-->
     <td class="itemPhoto">
     <?php if(!empty($partner['cover'])) { ?>
-    <a target="_blank" href="<?php echo $partner['link']; ?>">
-        <img src="<?php echo $partner['cover'][200]['source']; ?>" alt="<?php echo $partner['name']; ?>"/>
-    </a>
+    <img src="<?php echo $partner['cover'][200]['source']; ?>" alt="<?php echo $partner['name']; ?>"/>
     <?php } ?>
     </td>
     
@@ -42,7 +40,7 @@ generateBreadCrumbs($crumbs_level_1);
     
     <!--partner name-->
     <div class="mb15">
-        <h2><a target="_blank" href="<?php echo $partner['link']; ?>"><?php echo $partner['name']; ?></a></h2>
+        <h2><?php echo $partner['name']; ?></h2>
     </div>
     
     <!--partner web site-->
