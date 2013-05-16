@@ -66,13 +66,8 @@ generateBreadCrumbs($crumbs_level_1, $crumbs_level_2);
         Common.loadFancyBox();
       </script>
       
-      
       <!--link to item photos-->
-    <?php if($rb_response['images_count'] != 0) { ?>
-    <p><a class="attention" href="<?php echo $link_to_item_photos; ?>">открыть фотографии на отдельной странице</a></p>
-    <?php } ?>
-      
-
+        <p><a class="attention" href="<?php echo $link_to_item_photos; ?>">открыть фотографии на отдельной странице</a></p>
     
     <?php } ?>
     
