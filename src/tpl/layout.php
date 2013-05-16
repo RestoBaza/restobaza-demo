@@ -7,7 +7,7 @@
 <title><?php echo $page_title; ?></title>
 
 <!--main styles-->
-<link rel="stylesheet" href="css/styles.css?v=1" type="text/css" media="screen" />
+<link rel="stylesheet" href="css/styles.css?v=2" type="text/css" media="screen" />
 
 <!--styles for all restaurant menu types-->
 <link rel="stylesheet" href="css/menu_styles.css?v=1" type="text/css" media="screen" />

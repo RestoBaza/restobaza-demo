@@ -1,6 +1,6 @@
 
 
-<div class="box">
+<div class="box tac">
 <p>
 Демонстрация работы <a target="_blank" href="http://developers.restobaza.ru">RestoBaza API</a>.
 </p>

@@ -426,7 +426,7 @@ $restobaza = new Restobaza($config);
 } catch (RestobazaApiException $e) {
   //var_dump($e);
   $rb_error = $e->getError();
-  print_r($rb_error);
+  //print_r($rb_error);
 }
 
 
