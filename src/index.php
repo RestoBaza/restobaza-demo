@@ -25,9 +25,9 @@ $config = array(
   "co_id" => 1,
   "app_id" => 6,
   "app_secret" => 'tc1a7g8b12dbd445', 
-  "test_errors" => true, // false true
+  "test_errors" => false, // false true
   "test_empty_data" => false, // false true
-  "print_result" => true, // false true
+  "print_result" => false, // false true
   "print_decoded" => false // false true
 );
 
