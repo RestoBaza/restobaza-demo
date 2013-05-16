@@ -648,7 +648,12 @@ td.related_item_description {
 
 
 
+/* ERROR STYLES */
 
+
+.restobaza_error {
+  text-align: center;
+}
 
 
 

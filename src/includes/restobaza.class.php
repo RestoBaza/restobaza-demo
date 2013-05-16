@@ -273,7 +273,7 @@ class Restobaza {
     
     $url_params_str = implode('&', $url_params_array);
     
-    if(false) {
+    if(true) {
       $url = $this->api_address;
     } else {
       // this is for my local testing 
