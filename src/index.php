@@ -28,7 +28,7 @@ $config = array(
   "test_errors" => false, // false true
   "test_empty_data" => false, // false true
   "print_result" => false, // false true
-  "print_decoded" => false // false true
+  "print_decoded" => true // false true
 );
 
 // test restaurant with english text and no br 
