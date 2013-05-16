@@ -132,6 +132,12 @@ class Restobaza {
       $this->print_result = $config['print_result'];
     }
     
+    
+    if(isset($config['print_decoded']))
+    {
+      $this->print_decoded = $config['print_decoded'];
+    }
+    
   }
   
   
@@ -356,6 +362,12 @@ class Restobaza {
         //  throw new RestobazaApiException($error_array);
         //
         //}
+        
+        if($this->print_decoded == true) {
+          echo '<pre>';
+          print_r($decoded);
+          echo '</pre>';
+        }
 
 
         //set data property

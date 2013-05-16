@@ -25,20 +25,21 @@ $config = array(
   "co_id" => 1,
   "app_id" => 6,
   "app_secret" => 'tc1a7g8b12dbd445', 
-  "test_errors" => false, // false true
+  "test_errors" => true, // false true
   "test_empty_data" => false, // false true
-  "print_result" => true // false true
+  "print_result" => true, // false true
+  "print_decoded" => false // false true
 );
 
 // test restaurant with english text and no br 
-$config = array(
-  "co_id" => 25,
-  "app_id" => 15,
-  "app_secret" => '7e427d9c968cfd47', 
-  "test_errors" => false, // false true
-  "test_empty_data" => false, // false true
-  "print_result" => true // false true
-);
+//$config = array(
+//  "co_id" => 25,
+//  "app_id" => 15,
+//  "app_secret" => '7e427d9c968cfd47', 
+//  "test_errors" => false, // false true
+//  "test_empty_data" => false, // false true
+//  "print_result" => true // false true
+//);
 
 
 $restobaza = new Restobaza($config);
@@ -145,10 +146,10 @@ $restobaza = new Restobaza($config);
       
       $api_params = array(
         "v" => 2,
-        "now_time" => date('Ymd\THis'),
-        "type" => $action,
         "page" => $page, 
-        "limit" => $limit
+        "limit" => $limit,
+        "type" => $action,
+        "now_time" => date('Ymd\THis'),
       );
 
       $rb_response = $restobaza->api('events/getmany', $api_params);
@@ -166,9 +167,9 @@ $restobaza = new Restobaza($config);
         "id" => $item_id,
         "photos_page" => $page,
         "photos_limit" => $limit,
-        "other_guide_limit" => 2,
-        "other_reports_limit" => 2
-        //"other_past_limit" => 4
+        "other_guide_limit" => 4,
+        "other_reports_limit" => 4,
+        "other_past_limit" => 4
       );
       
       $rb_response = $restobaza->api('events/getone', $api_params);
@@ -348,6 +349,28 @@ $restobaza = new Restobaza($config);
     case 'menu':
       $content_tpl = 'tpl/menu/index.php';
       
+      
+      
+      // set section id parameter
+      $section_id = false;
+      if(isset($params['section_id'])) {
+        $section_id = (int) $params['section_id'];
+      }
+      
+      // get menu from RestoBaza
+      $api_params = array(
+        "v" => 2,
+        "menu_type" => $action,
+        "section_id" => $section_id
+      );
+       
+      $rb_response = $restobaza->api('menu/get', $api_params);
+      //var_dump($restobaza);
+      //var_dump($rb_response);
+      //exit;
+      
+      
+      
       // set title, css class, and tpl name for each menu
       $page_title =  'Основное меню';
       $menu_css_class =  'main_menu';
@@ -394,25 +417,6 @@ $restobaza = new Restobaza($config);
           break;
       }
       
-      
-      // set section id parameter
-      $section_id = false;
-      if(isset($params['section_id'])) {
-        $section_id = (int) $params['section_id'];
-      }
-      
-      // get menu from RestoBaza
-      $api_params = array(
-        "v" => 2,
-        "menu_type" => $action,
-        "section_id" => $section_id
-      );
-       
-      $rb_response = $restobaza->api('menu/get', $api_params);
-      //var_dump($restobaza);
-      //var_dump($rb_response);
-      //exit;
-      
 
       break;
 
@@ -421,8 +425,8 @@ $restobaza = new Restobaza($config);
 
 } catch (RestobazaApiException $e) {
   //var_dump($e);
-  //exit;
   $rb_error = $e->getError();
+  print_r($rb_error);
 }
 
 
