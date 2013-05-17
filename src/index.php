@@ -22,13 +22,14 @@ $content_tpl = 'tpl/welcome/index.php';
 
 // test restaurant with russian text
 $config = array(
-  "co_id" => 1,
-  "app_id" => 6,
-  "app_secret" => 'tc1a7g8b12dbd445', 
-  "test_errors" => false, // false true
-  "test_empty_data" => false, // false true
-  "print_result" => false, // false true
-  "print_decoded" => false // false true
+  "co_id" => 1
+  , "app_id" => 6
+  , "app_secret" => 'tc1a7g8b12dbd445'
+  //, "test_errors" => false, // false true
+  //, "test_empty_data" => false // false true
+  //, "print_result" => false, // false true
+  //, "print_decoded" => false // false true
+  //, "call_local_rb" => false // false true
 );
 
 // test restaurant with english text and no br 

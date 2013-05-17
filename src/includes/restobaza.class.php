@@ -1,63 +1,5 @@
 <?php
 
-
-/** RestobazaApiException
- *
- * Thrown when an API call returns an exception.
- *
- * @author Ivan Korablev-Dyson
- */
-class RestobazaApiException extends Exception
-{
-  /**
-   * The error info from the API server.
-   */
-  protected $error;
-
-  /**
-   * Make a new API Exception with the given result.
-   *
-   * @param array $error The result from the API server
-   */
-  public function __construct($error) {
-    $this->error = $error;
-
-    $code = isset($error['error_code']) ? $error['error_code'] : 0;
-
-    if(isset($error['error_description'])) {
-      // OAuth 2.0 Draft 10 style
-      $msg = $error['error_description'];
-    } else {
-      $msg = 'Unknown Error. Check getResult()';
-    }
-
-    parent::__construct($msg, $code);
-  }
-
-  /**
-   * Return the associated result object returned by the API server.
-   *
-   * @return array The result from the API server
-   */
-  public function getError() {
-    return $this->error;
-  }
-
-
-  /**
-   * To make debugging easier.
-   *
-   * @return string The string representation of the error
-   */
-  public function __toString() {
-    return $this->message;
-  }
-}
-
-
-
-
-
 /**
  *  Restobaza Class
  *
@@ -117,25 +59,42 @@ class Restobaza {
     $this->co_id = $config['co_id'];
     $this->app_secret = $config['app_secret'];
     
+    
+    // following are optional debug options:
+    
+    // if true, the class will always throw a test error
+    $this->test_errors = false;
     if(isset($config['test_errors']))
     {
       $this->test_errors = $config['test_errors'];
     }
     
+    // if true, the class will always return an empty result
+    $this->test_empty_data = false;
     if(isset($config['test_empty_data']))
     {
       $this->test_empty_data = $config['test_empty_data'];
     }
     
+    // if true, the file_get_contents result will be echoed
+    $this->print_result = false;
     if(isset($config['print_result']))
     {
       $this->print_result = $config['print_result'];
     }
     
-    
+    // if true, the decoded json will be printed
+    $this->print_decoded = false;
     if(isset($config['print_decoded']))
     {
       $this->print_decoded = $config['print_decoded'];
+    }
+    
+    // if true, the calls will be made to api.restobaza_local.ru, not api.restobaza.ru
+    $this->call_local_rb = false;
+    if(isset($config['call_local_rb']))
+    {
+      $this->call_local_rb = $config['call_local_rb'];
     }
     
   }
@@ -273,11 +232,12 @@ class Restobaza {
     
     $url_params_str = implode('&', $url_params_array);
     
-    if(true) {
-      $url = $this->api_address;
-    } else {
-      // this is for my local testing 
+    if($this->call_local_rb) {
       $url = 'http://api.restobaza_local.ru';
+    } else {
+      // this is for my local testing
+      $url = $this->api_address;
+      
     }
     
     //$url = 'http://api.restobaza.ru';
@@ -521,6 +481,62 @@ class Restobaza {
 
 }
 
+
+
+
+
+/** RestobazaApiException
+ *
+ * Thrown when an API call returns an exception.
+ *
+ * @author Ivan Korablev-Dyson
+ */
+class RestobazaApiException extends Exception
+{
+  /**
+   * The error info from the API server.
+   */
+  protected $error;
+
+  /**
+   * Make a new API Exception with the given result.
+   *
+   * @param array $error The result from the API server
+   */
+  public function __construct($error) {
+    $this->error = $error;
+
+    $code = isset($error['error_code']) ? $error['error_code'] : 0;
+
+    if(isset($error['error_description'])) {
+      // OAuth 2.0 Draft 10 style
+      $msg = $error['error_description'];
+    } else {
+      $msg = 'Unknown Error. Check getResult()';
+    }
+
+    parent::__construct($msg, $code);
+  }
+
+  /**
+   * Return the associated result object returned by the API server.
+   *
+   * @return array The result from the API server
+   */
+  public function getError() {
+    return $this->error;
+  }
+
+
+  /**
+   * To make debugging easier.
+   *
+   * @return string The string representation of the error
+   */
+  public function __toString() {
+    return $this->message;
+  }
+}
 
 
 
