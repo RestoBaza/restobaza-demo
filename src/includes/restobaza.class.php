@@ -233,9 +233,10 @@ class Restobaza {
     $url_params_str = implode('&', $url_params_array);
     
     if($this->call_local_rb) {
-      $url = 'http://api.restobaza_local.ru';
-    } else {
       // this is for my local testing
+      $url = 'http://api.restobaza_local.ru';
+      $this->api_address = $url;
+    } else {
       $url = $this->api_address;
       
     }
@@ -286,7 +287,8 @@ class Restobaza {
     //var_dump($query_url);
     //var_dump($result);
     if($this->print_result == true) {
-      echo($result);
+      //echo($result);
+      echo(htmlentities($result));
     }
     //exit;
 

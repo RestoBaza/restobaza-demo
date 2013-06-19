@@ -27,9 +27,9 @@ $config = array(
   , "app_secret" => 'tc1a7g8b12dbd445'
   //, "test_errors" => false, // false true
   //, "test_empty_data" => false // false true
-  //, "print_result" => false, // false true
+  //, "print_result" => true // false true
   //, "print_decoded" => false // false true
-  //, "call_local_rb" => false // false true
+  //, "call_local_rb" => true // false true
 );
 
 // test restaurant with english text and no br 
@@ -49,25 +49,36 @@ $restobaza = new Restobaza($config);
   switch ($controller)
   {
   
-  
+    
     /* WELCOME */
     case 'welcome':
+      
       $page_title = 'Демонстрация RestoBaza API';
       $content_tpl = 'tpl/welcome/index.php';
       
-      $api_params = array(
+      
+      // get events, photoreports, and news
+      $digest_api_params = array(
         "v" => 2,
         "now_time" => date('Ymd\THis'),
         "guide_limit" => 2, // get 2 afisha events
         "reports_limit" => 2, // get 2 photoreports
         "news_limit" => 4 // get 4 news 
       );
-
-      $rb_response = $restobaza->api('other/digest', $api_params);
-      //var_dump($rb_response);
+      $digest = $restobaza->api('welcome/digest', $digest_api_params);
+      //var_dump($digest);
       //exit;
       
       
+      // get text
+      $about_api_params = array(
+        "v" => 1
+      );
+      $about_text = $restobaza->api('welcome/about', $about_api_params);
+      //var_dump($about_text);
+      //exit;
+
+ 
     break;
   
     /* INTERIOR */
